@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>象棋作業</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            font-family: '標楷體';
+        }
+
+        #main {
+            width: 1200px;
+            /* background: yellow; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        /* 左右兩側的文字 */
+        .text {
+            /* background: darkcyan; */
+            width: 60px;
+            font-size: 50px;
+            height: 100%;
+            text-align: center;
+            font-family: '標楷體';
+        }
+
+        /* 棋盤 */
+        #board {
+            width: 1000px;
+            height: 1100px;
+            border: 3px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inner {
+            width: 800px;
+            height: 900px;
+            border: 3px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .row {
+            box-sizing: border-box;
+            width: 800px;
+            height: 100px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .col {
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        hr {
+            width: calc();
+            border: 1px solid black;
+            height: 141.4px;
+        }
+
+        .hrRT {
+            transform: rotate(45deg);
+        }
+
+        .hrLT {
+            transform: rotate(-45deg);
+        }
+
+
+        #ChuheHanjie {
+            font-size: 70px;
+        }
+
+        /* 棋子 */
+        .piece {
+            width: 80px;
+            height: 80px;
+            border: 1px solid black;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .red {
+            color: red;
+        }
+
+
+        .piece-row0 {
+            top: 0;
+        }
+
+        .piece-row2 {
+            top: 200px;
+        }
+
+        .piece-row3 {
+            top: 300px;
+        }
+
+        .piece-row0-b {
+            bottom: 0;
+            transform: translate(-50%, 50%);
+        }
+
+        .piece-row2-b {
+            bottom: 200px;
+            transform: translate(-50%, 50%);
+        }
+
+        .piece-row3-b {
+            bottom: 300px;
+            transform: translate(-50%, 50%);
+        }
+
+
+
+        .piece-col0 {
+            left: 0;
+        }
+
+        .piece-col1 {
+            left: 100px;
+        }
+
+        .piece-col2 {
+            left: 200px;
+        }
+
+        .piece-col3 {
+            left: 300px;
+        }
+
+        .piece-col4 {
+            left: 400px;
+        }
+
+        .piece-col5 {
+            left: 500px;
+        }
+
+        .piece-col6 {
+            left: 600px;
+        }
+
+        .piece-col7 {
+            left: 700px;
+        }
+
+        .piece-col8 {
+            left: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="text">棋盤裡<br>，車無輪<br>，馬無疆<br>，叫聲將軍提防提防</div>
+        <!-- 棋盤 -->
+        <div id="board">
+            <div id="inner">
+                <!-- 格子 -->
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <hr class="hrLT">
+                    </div>
+                    <div class="col">
+                        <hr class="hrRT">
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <hr class="hrRT">
+                    </div>
+                    <div class="col">
+                        <hr class="hrLT">
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <!-- 楚河漢界 -->
+                <div id="ChuheHanjie" class="row">
+                    <div id="Chuhe">楚河</div>
+                    <div id="Hanjie">漢界</div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <hr class="hrLT">
+                    </div>
+                    <div class="col">
+                        <hr class="hrRT">
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <hr class="hrRT">
+                    </div>
+                    <div class="col">
+                        <hr class="hrLT">
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <!-- 黑色棋子 -->
+                <div class="piece piece-row0 piece-col0">車</div>
+                <div class="piece piece-row0 piece-col1">馬</div>
+                <div class="piece piece-row0 piece-col2">象</div>
+                <div class="piece piece-row0 piece-col3">士</div>
+                <div class="piece piece-row0 piece-col4">將</div>
+                <div class="piece piece-row0 piece-col5">士</div>
+                <div class="piece piece-row0 piece-col6">象</div>
+                <div class="piece piece-row0 piece-col7">馬</div>
+                <div class="piece piece-row0 piece-col8">車</div>
+
+                <div class="piece piece-row2 piece-col1">包</div>
+                <div class="piece piece-row2 piece-col7">包</div>
+
+                <div class="piece piece-row3 piece-col0">卒</div>
+                <div class="piece piece-row3 piece-col2">卒</div>
+                <div class="piece piece-row3 piece-col4">卒</div>
+                <div class="piece piece-row3 piece-col6">卒</div>
+                <div class="piece piece-row3 piece-col8">卒</div>
+
+                <!-- 紅色棋子 -->
+                <div class="piece red piece-row0-b piece-col0">俥</div>
+                <div class="piece red piece-row0-b piece-col1">傌</div>
+                <div class="piece red piece-row0-b piece-col2">相</div>
+                <div class="piece red piece-row0-b piece-col3">仕</div>
+                <div class="piece red piece-row0-b piece-col4">帥</div>
+                <div class="piece red piece-row0-b piece-col5">仕</div>
+                <div class="piece red piece-row0-b piece-col6">相</div>
+                <div class="piece red piece-row0-b piece-col7">傌</div>
+                <div class="piece red piece-row0-b piece-col8">俥</div>
+
+                <div class="piece red piece-row2-b piece-col1">炮</div>
+                <div class="piece red piece-row2-b piece-col7">炮</div>
+
+                <div class="piece red piece-row3-b piece-col0">兵</div>
+                <div class="piece red piece-row3-b piece-col2">兵</div>
+                <div class="piece red piece-row3-b piece-col4">兵</div>
+                <div class="piece red piece-row3-b piece-col6">兵</div>
+                <div class="piece red piece-row3-b piece-col8">兵</div>
+            </div>
+        </div>
+        <div class="text">圖畫裡<br>，龍不吟<br>，虎不嘯<br>，小小書僮可笑可笑</div>
+    </div>
+</body>
+
+</html>
